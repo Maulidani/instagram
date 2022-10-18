@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
-
   @override
   _RootAppState createState() => _RootAppState();
 }
@@ -14,8 +13,49 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: getAppBar(),
+      ),
       bottomNavigationBar: getFooter(),
     );
+  }
+
+  Widget getAppBar() {
+    if (pageIndex == 0) {
+      return AppBar(
+        toolbarHeight: 60,
+        automaticallyImplyLeading: false,
+        backgroundColor: appBarColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            SvgPicture.asset(
+              "assets/images/camera_icon.svg",
+              width: 24,
+            ),
+            Text(
+              "Instagram",
+              style: TextStyle(fontFamily: 'Billabong', fontSize: 28),
+            ),
+            SvgPicture.asset(
+              "assets/images/message_icon.svg",
+              width: 24,
+            ),
+          ],
+        ),
+      );
+    } else if (pageIndex == 1) {
+      return AppBar();
+    } else if (pageIndex == 2) {
+      return AppBar();
+    } else if (pageIndex == 3) {
+      return AppBar();
+    } else if (pageIndex == 4) {
+      return AppBar();
+    } else {
+      return AppBar();
+    }
   }
 
   Widget getFooter() {
@@ -40,12 +80,9 @@ class _RootAppState extends State<RootApp> {
     return Container(
       width: double.infinity,
       height: 50,
-      decoration: BoxDecoration(
-          color: appFooterColor
-      ),
+      decoration: BoxDecoration(color: appFooterColor),
       child: Padding(
-        padding: const EdgeInsets.only(
-            left: 32, right: 32),
+        padding: const EdgeInsets.only(left: 32, right: 32),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(bottomItems.length, (index) {
@@ -53,10 +90,10 @@ class _RootAppState extends State<RootApp> {
                 onTap: () {
                   selectedTab(index);
                 },
-                child: SvgPicture.asset(bottomItems[index],
+                child: SvgPicture.asset(
+                  bottomItems[index],
                   width: 24,
-                )
-            );
+                ));
           }),
         ),
       ),
