@@ -17,7 +17,38 @@ class _RootAppState extends State<RootApp> {
         preferredSize: const Size.fromHeight(60),
         child: getAppBar(),
       ),
+      body: getBody(),
       bottomNavigationBar: getFooter(),
+    );
+  }
+
+  Widget getBody() {
+    List<Widget> listPage = [
+      Center(
+          child: Text("Home Page",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: black))),
+      Center(
+          child: Text("Search Page",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: black))),
+      Center(
+          child: Text("Upload Page",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: black))),
+      Center(
+          child: Text("Activity Page",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: black))),
+      Center(
+          child: Text("Account Page",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: black)))
+    ];
+
+    return IndexedStack(
+      index: pageIndex,
+      children: listPage,
     );
   }
 
@@ -48,11 +79,26 @@ class _RootAppState extends State<RootApp> {
     } else if (pageIndex == 1) {
       return AppBar();
     } else if (pageIndex == 2) {
-      return AppBar();
+      return AppBar(
+        toolbarHeight: 60,
+        title: Text("Upload"),
+        centerTitle: true,
+        backgroundColor: appBarColor,
+      );
     } else if (pageIndex == 3) {
-      return AppBar();
+      return AppBar(
+        toolbarHeight: 60,
+        centerTitle: true,
+        title: Text("Activity"),
+        backgroundColor: appBarColor,
+      );
     } else if (pageIndex == 4) {
-      return AppBar();
+      return AppBar(
+        centerTitle: true,
+        toolbarHeight: 60,
+        title: Text("Account"),
+        backgroundColor: appBarColor,
+      );
     } else {
       return AppBar();
     }
