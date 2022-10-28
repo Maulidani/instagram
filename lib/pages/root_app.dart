@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/pages/home_page.dart';
 import 'package:instagram/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
@@ -24,10 +25,7 @@ class _RootAppState extends State<RootApp> {
 
   Widget getBody() {
     List<Widget> listPage = [
-      Center(
-          child: Text("Home Page",
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold, color: black))),
+      HomePage(),
       Center(
           child: Text("Search Page",
               style: TextStyle(
